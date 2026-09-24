@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "INFP的充电站",
+  "short_name": "INFP的充电站",
+  "description": "留一点时间给自己 · A small pause for yourself",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f4ed",
+  "theme_color": "#466451",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

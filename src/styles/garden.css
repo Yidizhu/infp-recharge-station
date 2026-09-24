@@ -1,0 +1,86 @@
+.garden {
+  --garden-sky-top: #dcece6; --garden-sky-bottom: #f6ecce; --garden-sun: #f9dc9e;
+  --garden-mountain-far: #b6cfbf; --garden-mountain: #8eafa0; --garden-mist: #e7ece0; --garden-cloud: #fff9eb;
+  --garden-grass-light: #bdd0a2; --garden-grass: #8eaf89; --garden-grass-stroke: #64866c; --garden-foreground: #557f69;
+  --garden-water-far: #b7d3ca; --garden-water: #75aeb9; --garden-water-shine: #f2f4db; --garden-bank: #d5d8ab;
+  --garden-leaf-back: #517e64; --garden-leaf: #739a72; --garden-leaf-light: #a3be82; --garden-leaf-vein: #d0d5a0;
+  --garden-trunk: #746954; --garden-bark: #a39975; --garden-path: #e5d7b3; --garden-path-mark: #c3b798;
+  --garden-house: #f2e5c4; --garden-house-side: #d2bd9d; --garden-roof: #76887a; --garden-window: #d99d59;
+  --garden-flower-pink: #dea0ae; --garden-flower-cream: #fff0cf; --garden-flower-purple: #b6a0c6; --garden-flower-center: #ebc878;
+  --garden-stem: #4c765c; --garden-rock: #a1a99a; --garden-shadow: #547966; --garden-soil: #998a6e; --garden-starlight: #f7e8c3;
+  margin: 20px 0 28px; border: 1px solid var(--line); border-radius: 22px 22px 12px 12px; background: var(--surface); overflow: clip;
+}
+.garden[hidden] { display: none; }
+.garden-heading { display: flex; flex-wrap: wrap; gap: 8px 12px; justify-content: space-between; align-items: center; padding: 18px 18px 12px; }
+.garden-heading > div { min-width: 0; }
+.charging-app .garden-kicker { font-size: .75rem; color: var(--muted); margin: 0 0 4px; }
+.charging-app .garden-heading h2 { font-size: 1.125rem; margin: 0; letter-spacing: .025em; }
+.charging-app .garden-motion { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 0; padding: 8px; font-size: .75rem; background: var(--wash); border-radius: 24px; color: var(--primary); }
+.charging-app .garden-motion[aria-pressed='true'] { padding: 8px; border: 0; }
+.garden-motion svg { flex: 0 0 16px; width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+.garden-picture { background: var(--garden-sky-top); }
+.garden-landscape { display: block; width: 100%; height: auto; }
+.garden-sun { fill: var(--garden-sun); }
+.garden-moon { fill: var(--garden-sun); display: none; }
+.garden-stars { display: none; }
+.garden-canopy { transform-box: fill-box; transform-origin: 50% 100%; animation: garden-sway 9s ease-in-out infinite alternate; }
+.garden-growing-tree .garden-canopy { animation-delay: -4s; animation-duration: 11s; }
+.garden-river-flow { animation: garden-stream 18s linear infinite; }
+.garden-river-flow-slow { animation-duration: 25s; animation-direction: reverse; }
+.garden-new-flower { transform-box: fill-box; transform-origin: 50% 100%; animation: garden-bloom 1.6s cubic-bezier(.2,.7,.3,1) both; }
+.garden-bloom-ring { transform-box: fill-box; transform-origin: center; animation: garden-ring 1.6s ease-out both; }
+.garden[data-motion='paused'] * { animation-play-state: paused !important; }
+.garden-caption { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--wash); }
+.garden-caption > div { display: grid; gap: 2px; }
+.garden-flower-count { color: var(--primary); font-size: 1rem; font-weight: 650; }
+.garden-stage { color: var(--muted); font-size: .8125rem; }
+.garden-caption-mark svg { width: 36px; height: 36px; fill: none; stroke: var(--primary); stroke-width: 1.5; }
+.garden-reward { display: grid; gap: 6px; border-top: 1px solid var(--line); padding: 18px 20px; }
+.garden-reward strong { color: var(--primary); font-size: 1.0625rem; }
+.garden-reward span { color: var(--muted); font-size: .875rem; }
+.charging-app .garden-kind-note { padding: 16px 20px 0; font-size: .875rem; color: var(--muted); }
+.garden-rules { padding: 0 20px 8px; }
+.garden-rules summary { padding-block: 12px; min-height: 48px; cursor: pointer; color: var(--primary); font-size: .875rem; }
+.garden-rules p { font-size: .875rem; color: var(--muted); }
+.garden-milestones { list-style: none; padding: 0; margin: 12px 0 20px; display: flex; flex-wrap: wrap; gap: 16px; }
+.garden-milestones li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: .8125rem; color: var(--muted); }
+.garden-milestones li > span:first-child { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 50%; font-variant-numeric: tabular-nums; }
+.garden-milestones li[data-grown='true'] { color: var(--primary); }
+.garden-milestones li[data-grown='true'] > span:first-child { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.garden-compact .garden-kicker { display: none; }
+.garden-compact .garden-heading { padding: 10px 16px; }
+.garden-compact .garden-picture { overflow: hidden; }
+.garden-compact .garden-caption { padding-block: 12px; }
+@keyframes garden-sway { from { transform: rotate(-.8deg); } to { transform: rotate(.9deg); } }
+@keyframes garden-stream { to { stroke-dashoffset: -184; } }
+@keyframes garden-bloom { 0% { transform: scale(.15); opacity: .2; } 65% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes garden-ring { from { transform: scale(.4); opacity: .8; } to { transform: scale(2); opacity: 0; } }
+.charging-app[data-theme='dark'] .garden {
+  --garden-sky-top: #233e4b; --garden-sky-bottom: #527174; --garden-sun: #f4e5b5;
+  --garden-mountain-far: #3b5963; --garden-mountain: #355861; --garden-mist: #86a7a0; --garden-cloud: #9bb5b4;
+  --garden-grass-light: #55796b; --garden-grass: #365e56; --garden-grass-stroke: #7d9d83; --garden-foreground: #294b46;
+  --garden-water-far: #638d92; --garden-water: #416f80; --garden-water-shine: #c6dbc9; --garden-bank: #7b8b78;
+  --garden-leaf-back: #284f48; --garden-leaf: #436f5c; --garden-leaf-light: #71977a; --garden-leaf-vein: #acc2a2;
+  --garden-trunk: #6e7462; --garden-bark: #a1ac8a; --garden-path: #a7ad91; --garden-path-mark: #87977d;
+  --garden-house: #a3b4a0; --garden-house-side: #6c8b82; --garden-roof: #39545c; --garden-window: #f2d79b;
+  --garden-flower-pink: #e3adbc; --garden-flower-cream: #f5e8bd; --garden-flower-purple: #c7b7dd; --garden-flower-center: #f0d298;
+  --garden-stem: #96b89a; --garden-rock: #8b9f94; --garden-shadow: #193e3c; --garden-soil: #879075;
+}
+.charging-app[data-theme='dark'] .garden-sun { display: none; }
+.charging-app[data-theme='dark'] .garden-moon, .charging-app[data-theme='dark'] .garden-stars { display: block; }
+@media (prefers-color-scheme: dark) {
+  .charging-app[data-theme='system'] .garden {
+    --garden-sky-top: #233e4b; --garden-sky-bottom: #527174; --garden-sun: #f4e5b5;
+    --garden-mountain-far: #3b5963; --garden-mountain: #355861; --garden-mist: #86a7a0; --garden-cloud: #9bb5b4;
+    --garden-grass-light: #55796b; --garden-grass: #365e56; --garden-grass-stroke: #7d9d83; --garden-foreground: #294b4b;
+    --garden-water-far: #638d92; --garden-water: #416f80; --garden-water-shine: #c6dbc9; --garden-bank: #7b8b78;
+    --garden-leaf-back: #284f48; --garden-leaf: #436f5c; --garden-leaf-light: #71977a; --garden-leaf-vein: #acc2a2;
+    --garden-trunk: #6e7462; --garden-bark: #a1ac8a; --garden-path: #a7ad91; --garden-path-mark: #87977d;
+    --garden-house: #a3b4a0; --garden-house-side: #6c8b82; --garden-roof: #39545c; --garden-window: #f2d79b;
+    --garden-flower-pink: #e3adbc; --garden-flower-cream: #f5e8bd; --garden-flower-purple: #c7b7dd; --garden-flower-center: #f0d298;
+    --garden-stem: #96b89a; --garden-rock: #8b9f94; --garden-shadow: #193e3c; --garden-soil: #879075;
+  }
+  .charging-app[data-theme='system'] .garden-sun { display: none; }
+  .charging-app[data-theme='system'] .garden-moon, .charging-app[data-theme='system'] .garden-stars { display: block; }
+}
+@media (prefers-reduced-motion: reduce) { .garden *, .garden *::before, .garden *::after { animation: none !important; transition: none !important; } }
